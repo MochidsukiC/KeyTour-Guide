@@ -182,6 +182,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
 
     <h3 style="margin-top:32px">🧑 NPCの位置を変える（一括配置したNPC）</h3>
     <ol class="steps">
+      <li>杖を右クリック →「NPC」→ 一覧の下段「<b>置いたNPCを撤去</b>」→「決定」。古い位置のNPCを先に片付けておく（遠くの読み込まれていない場所に古いNPCが残るのを防ぐ）。</li>
       <li>NPCを立たせたい場所に<b>自分が立ち</b>、NPCに向かせたい方向を見る。</li>
       <li>杖を右クリック →「NPC」→ 動かしたいNPC（例: <code>start_npc1</code>）を選ぶ。</li>
       <li>「<b>コンパスの目標を現在地に</b>」（ターゲットのアイコン）を押す。これが台帳上のNPCの位置になり、コンパスもここを指すようになる。</li>
@@ -190,7 +191,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <li>「NPCのところへ移動」で、新しい位置に立っているか確かめる。</li>
     </ol>
     <div class="shots"><figure class="shot"><img src="img/npc-target.jpg" alt="「コンパスの目標を現在地に」で位置を記録" loading="lazy"><figcaption>「コンパスの目標を現在地に」で位置を記録</figcaption></figure><figure class="shot"><img src="img/npc-place.jpg" alt="NPC一覧の下段「台帳どおりに一括配置」" loading="lazy"><figcaption>NPC一覧の下段「台帳どおりに一括配置」</figcaption></figure><figure class="shot"><img src="img/npc-confirm.jpg" alt="確認画面。決定で全NPCを置き直す" loading="lazy"><figcaption>確認画面。決定で全NPCを置き直す</figcaption></figure></div>
-    <div class="note">一括配置は、前に一括配置で置いたNPCを<b>すべて消して置き直します</b>。手で置いたNPC（Citizens など）は対象外です。</div>
+    <div class="note">一括配置は、前に一括配置で置いたNPCを<b>すべて消して置き直します</b>。また、位置が登録されている<b>全NPCの紐付けが一括配置のNPCに切り替わります</b>。下の「付け替える」で自分で置いたNPCに紐付けている場合は、一括配置のあとにもう一度紐付けてください。</div>
 
     <h3 style="margin-top:32px">🔗 自分で置いたNPCに付け替える（村人・防具立て・Citizens など）</h3>
     <ol class="steps">
