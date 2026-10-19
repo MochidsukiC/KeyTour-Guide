@@ -69,6 +69,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <a class="nav-link" href="#wand">管理の杖</a>
       <a class="nav-link" href="#menu">管理メニュー</a>
       <a class="nav-link" href="#setup">設定</a>
+      <a class="nav-link" href="#howto">手順</a>
       <a class="nav-link" href="#players">プレイヤー</a>
       <a class="nav-link" href="#faq">困ったとき</a>
     </div>
@@ -83,7 +84,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
 
 <main>
   <div class="toc">
-    <a href="#perm">権限</a><a href="#wand">管理の杖</a><a href="#menu">メニュー一覧</a><a href="#setup">島・NPC・TP・アイテム</a><a href="#gate">最後の島</a><a href="#players">プレイヤー対応</a><a href="#ops">運営の道具</a><a href="#faq">困ったとき</a>
+    <a href="#perm">権限</a><a href="#wand">管理の杖</a><a href="#menu">メニュー一覧</a><a href="#setup">島・NPC・TP・アイテム</a><a href="#howto">作業の手順</a><a href="#gate">最後の島</a><a href="#players">プレイヤー対応</a><a href="#ops">運営の道具</a><a href="#faq">困ったとき</a>
   </div>
 
   <section id="perm">
@@ -153,8 +154,65 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
     </ol>
   </section>
 
+  <section id="howto">
+    <span class="section-label">05 / HOW-TO</span>
+    <h2>よくある作業の手順</h2>
+    <p>どの作業も「杖でメニューを開く → 対象を選ぶ → 杖で指定する／その場に立って押す」の流れです。変更はすぐ保存され、読み直しも自動で行われます。終わったら、チャットに出る「設定の検証」の件数も確認してください。</p>
+
+    <h3 style="margin-top:32px">🌀 TPの起点（乗る感圧板・押すボタン）を移す</h3>
+    <ol class="steps">
+      <li>新しい場所に感圧板・ボタンなどを置き、その近くに立つ。</li>
+      <li>杖を右クリック →「TP」→ 移したいTP（例: <code>castle_tp1</code>）を選ぶ。</li>
+      <li>「<b>起点のブロックを指定</b>」（感圧板のアイコン）を押す。メニューが閉じ、画面下に「杖で指定: TP … の起点ブロック」と出る。</li>
+      <li>杖で、新しい感圧板・ボタンを<b>右クリック</b>する。</li>
+      <li>チャットに「起点を … にしました」と出たら完了。起動方法は自動で「ブロック」になる。</li>
+      <li>TPの詳細で「<b>自分で試す</b>」を押し、参加者と同じ条件で飛べるか確かめる。</li>
+    </ol>
+    <div class="shots"><figure class="shot"><img src="img/pick.jpg" alt="指定中は画面下に「杖で指定: …」と出る。やめるときはしゃがんで右クリック" loading="lazy"><figcaption>指定中は画面下に「杖で指定: …」と出る。やめるときはしゃがんで右クリック</figcaption></figure><figure class="shot"><img src="img/picked.jpg" alt="右クリックすると起点が切り替わり、チャットに結果が出る" loading="lazy"><figcaption>右クリックすると起点が切り替わり、チャットに結果が出る</figcaption></figure></div>
+
+    <h3 style="margin-top:32px">📍 TPの行き先（飛んだ先）を変える</h3>
+    <ol class="steps">
+      <li>新しい行き先に<b>自分が立ち</b>、着いたときに向かせたい方向を見る（向きも保存されます）。</li>
+      <li>杖を右クリック →「TP」→ 対象のTPを選ぶ。</li>
+      <li>「<b>行き先を現在地に</b>」（ベッドのアイコン）を押す。カーソルを合わせると今の行き先が見られる。</li>
+      <li>チャットに「行き先を設定しました」と出たら完了。起点へ戻って「自分で試す」で確認する。</li>
+    </ol>
+    <div class="shots"><figure class="shot"><img src="img/tp-dest.jpg" alt="「行き先を現在地に」。説明に今の行き先が出る" loading="lazy"><figcaption>「行き先を現在地に」。説明に今の行き先が出る</figcaption></figure><figure class="shot"><img src="img/tp-dest-done.jpg" alt="押すとすぐ保存され、検証結果も表示される" loading="lazy"><figcaption>押すとすぐ保存され、検証結果も表示される</figcaption></figure></div>
+    <div class="note tip">踏む範囲で起動させたいときは、「<b>区域を指定</b>」（金のシャベル）を押し、杖で範囲の角を2か所右クリックします。起動方法は自動で「区域」になります。</div>
+
+    <h3 style="margin-top:32px">🧑 NPCの位置を変える（一括配置したNPC）</h3>
+    <ol class="steps">
+      <li>NPCを立たせたい場所に<b>自分が立ち</b>、NPCに向かせたい方向を見る。</li>
+      <li>杖を右クリック →「NPC」→ 動かしたいNPC（例: <code>start_npc1</code>）を選ぶ。</li>
+      <li>「<b>コンパスの目標を現在地に</b>」（ターゲットのアイコン）を押す。これが台帳上のNPCの位置になり、コンパスもここを指すようになる。</li>
+      <li>「戻る」でNPCの一覧に戻り、下段の「<b>台帳どおりに一括配置</b>」（防具立てのアイコン）を押す。</li>
+      <li>確認画面で「決定」を押すと、全NPCが台帳の位置に置き直される。</li>
+      <li>「NPCのところへ移動」で、新しい位置に立っているか確かめる。</li>
+    </ol>
+    <div class="shots"><figure class="shot"><img src="img/npc-target.jpg" alt="「コンパスの目標を現在地に」で位置を記録" loading="lazy"><figcaption>「コンパスの目標を現在地に」で位置を記録</figcaption></figure><figure class="shot"><img src="img/npc-place.jpg" alt="NPC一覧の下段「台帳どおりに一括配置」" loading="lazy"><figcaption>NPC一覧の下段「台帳どおりに一括配置」</figcaption></figure><figure class="shot"><img src="img/npc-confirm.jpg" alt="確認画面。決定で全NPCを置き直す" loading="lazy"><figcaption>確認画面。決定で全NPCを置き直す</figcaption></figure></div>
+    <div class="note">一括配置は、前に一括配置で置いたNPCを<b>すべて消して置き直します</b>。手で置いたNPC（Citizens など）は対象外です。</div>
+
+    <h3 style="margin-top:32px">🔗 自分で置いたNPCに付け替える（村人・防具立て・Citizens など）</h3>
+    <ol class="steps">
+      <li>新しいNPC（エンティティ）を好きな場所に置く。</li>
+      <li>杖を右クリック →「NPC」→ 対象のNPCを選ぶ。</li>
+      <li>「<b>NPCを指定して紐付け</b>」（リードのアイコン）を押す。</li>
+      <li>杖で、置いたエンティティを<b>右クリック</b>する。</li>
+      <li>チャットに「… に紐付けました」と出たら完了。会話・かけらの受け渡しはそのエンティティで動き、コンパスの目標もその位置になる。</li>
+    </ol>
+    <div class="shots"><figure class="shot"><img src="img/npc-link.jpg" alt="「NPCを指定して紐付け」。今の紐付け先も表示される" loading="lazy"><figcaption>「NPCを指定して紐付け」。今の紐付け先も表示される</figcaption></figure></div>
+
+    <h3 style="margin-top:32px">🏝 島の範囲・到着点を変える</h3>
+    <ol class="steps">
+      <li>杖を右クリック →「島」→ 対象の島を選ぶ。</li>
+      <li>範囲: 「<b>範囲を指定</b>」→ 杖で島の角のブロックを右クリック → 対角のブロックを右クリック（高さはワールド全域）。</li>
+      <li>到着点: 着地させたい場所に立って向きを決め、「<b>到着点を現在地に</b>」を押す。</li>
+      <li>「この場所の情報」（管理メニューのコンパス）で、島の中にいると判定されるか確かめる。</li>
+    </ol>
+  </section>
+
   <section id="gate">
-    <span class="section-label">05 / FINAL ISLAND</span>
+    <span class="section-label">06 / FINAL ISLAND</span>
     <h2>最後の島の入口</h2>
     <ul class="card" style="padding-left:2.2em">
       <li><b>入口の範囲を指定</b> — 杖で角を2か所。ここに入った瞬間に開放の条件を判定します。</li>
@@ -165,7 +223,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
   </section>
 
   <section id="players">
-    <span class="section-label">06 / PLAYERS</span>
+    <span class="section-label">07 / PLAYERS</span>
     <h2>プレイヤー対応</h2>
     <p>「プレイヤー」からオンラインの参加者を選ぶと、上部の本アイコンに進行（会話・かけら・鍵など）が表示されます。</p>
     <div class="grid" style="margin-top:16px">
@@ -180,7 +238,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
   </section>
 
   <section id="ops">
-    <span class="section-label">07 / OPERATIONS</span>
+    <span class="section-label">08 / OPERATIONS</span>
     <h2>運営の道具</h2>
     <div class="grid">
       <div class="card"><h3>データ出力</h3><p>行動データを9項目のCSVで出力します。</p></div>
@@ -190,7 +248,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
   </section>
 
   <section id="faq">
-    <span class="section-label">08 / TROUBLESHOOTING</span>
+    <span class="section-label">09 / TROUBLESHOOTING</span>
     <h2>困ったとき</h2>
     <div class="grid">
       <div class="card"><h3>杖がない</h3><p>権限があるか確認して、ログインし直してください。自動で渡されます。</p></div>
