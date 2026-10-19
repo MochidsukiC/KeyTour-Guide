@@ -54,6 +54,7 @@ table{width:100%;border-collapse:collapse;background:var(--bg-card);border-radiu
 th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border-subtle)}
 th{background:#f0f4ff;font-weight:700}
 .table-wrap{overflow-x:auto}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px}.shot{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}.shot img{display:block;width:100%;height:auto}.shot figcaption{padding:8px 14px;font-size:.85rem;color:var(--text-secondary)}
 footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8rem;border-top:1px solid var(--border-card)}
 @media (max-width:600px){.nav-links{display:none}.hero{padding-top:48px}}
 </style>
@@ -108,6 +109,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <div class="card"><span class="icon">PICK</span><h3>ブロック／NPCの指定</h3><p>メニューで「指定」を選ぶとメニューが閉じ、アクションバーに「杖で指定: …」と出ます。その状態で対象を右クリックします。</p></div>
       <div class="card"><span class="icon">SNEAK + RIGHT CLICK</span><h3>指定をやめる</h3><p>しゃがんで右クリックすると、指定をやめます。</p></div>
     </div>
+    <div class="shots"><figure class="shot"><img src="img/main.jpg" alt="杖を右クリックすると開く管理メニュー" loading="lazy"><figcaption>杖を右クリックすると開く管理メニュー</figcaption></figure><figure class="shot"><img src="img/main-hover.jpg" alt="アイコンにカーソルを合わせると説明と件数が出る" loading="lazy"><figcaption>アイコンにカーソルを合わせると説明と件数が出る</figcaption></figure></div>
     <div class="note tip">範囲の指定（島・TPの区域・最後の島の入口）は、杖で<b>角のブロックを2か所</b>クリックします。高さはワールド全域になります。</div>
   </section>
 
@@ -139,6 +141,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <div class="card"><h3>🌀 TP</h3><ul><li>起点のブロックを指定（感圧板・ボタンなど）</li><li>区域を指定（杖で2点）</li><li>行き先を現在地に</li><li>編集: 起動方法・入場条件・演出・時刻・SE</li><li>自分で試す（条件も参加者と同じ）</li><li>一覧画面で「起点ブロックの点検」「起点を近くの感圧板に合わせる」</li></ul></div>
       <div class="card"><h3>💎 アイテム</h3><ul><li>編集: 種類・基礎アイテム・モデル・名前・説明・速度・本のページ</li><li>試験用に受け取る（進行には記録されず、再ログインで回収）</li></ul></div>
     </div>
+<div class="shots"><figure class="shot"><img src="img/islands.jpg" alt="島の一覧。右下のエメラルドで新しく作る" loading="lazy"><figcaption>島の一覧。右下のエメラルドで新しく作る</figcaption></figure><figure class="shot"><img src="img/island.jpg" alt="島の詳細。範囲の指定は杖で2点クリック" loading="lazy"><figcaption>島の詳細。範囲の指定は杖で2点クリック</figcaption></figure><figure class="shot"><img src="img/edit.jpg" alt="「編集」で開くダイアログ。決定で保存と読み直し" loading="lazy"><figcaption>「編集」で開くダイアログ。決定で保存と読み直し</figcaption></figure><figure class="shot"><img src="img/tps.jpg" alt="TPの一覧。下段に起点の点検・自動合わせ" loading="lazy"><figcaption>TPの一覧。下段に起点の点検・自動合わせ</figcaption></figure><figure class="shot"><img src="img/tp.jpg" alt="TPの詳細。起点のブロックを杖で指定" loading="lazy"><figcaption>TPの詳細。起点のブロックを杖で指定</figcaption></figure></div>
     <h3 style="margin-top:32px">はじめて設定するときの流れ</h3>
     <ol class="steps">
       <li>「島」で各島の範囲と到着点を決める。</li>
@@ -172,6 +175,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <div class="card"><h3>進行を初期化<span class="perm p-admin">admin</span></h3><p>会話・かけら・鍵・開放・到達・配布をすべて消します。行動記録は残ります。元に戻せません。</p></div>
       <div class="card"><h3>集計から除外<span class="perm p-admin">admin</span></h3><p>運営・試験アカウントは除外してください。</p></div>
     </div>
+<div class="shots"><figure class="shot"><img src="img/player.jpg" alt="プレイヤーメニュー。本のアイコンで進行を確認" loading="lazy"><figcaption>プレイヤーメニュー。本のアイコンで進行を確認</figcaption></figure></div>
     <div class="note">解除・付与・取消・初期化では<b>理由の入力</b>を求められます。理由は管理記録に残ります。</div>
   </section>
 
@@ -194,6 +198,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
       <div class="card"><h3>YAMLを直接書き換えた</h3><p>管理メニューの「読み直し」を押してください。</p></div>
       <div class="card"><h3>どこかが動かない</h3><p>まず「設定の検証」を開き、赤い項目から直してください。</p></div>
     </div>
+<div class="shots"><figure class="shot"><img src="img/validate.jpg" alt="設定の検証。赤はエラー、黄は確認。カーソルで内容が出る" loading="lazy"><figcaption>設定の検証。赤はエラー、黄は確認。カーソルで内容が出る</figcaption></figure></div>
   </section>
 </main>
 
