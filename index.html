@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f9fc">
+<title>KeyTour 管理パネルの使い方 | 放課後らぼらとり</title>
+<link rel="icon" type="image/png" href="https://houlab.jp/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--color-mochizuki:#050020;--color-cheekama:#ffb6c1;--color-gauge:#31f58c;--color-mui:#6495ed;--color-kuki:#1a6b4a;--bg-deep:#f8f9fc;--bg-card:#ffffff;--bg-card-hover:#f0f4ff;--bg-glass:rgba(255,255,255,.75);--bg-hero-grad:linear-gradient(180deg,#eef2ff 0%,#f8f9fc 40%,#ffffff 100%);--grid-line:rgba(100,149,237,.06);--grid-line-major:rgba(100,149,237,.1);--text-primary:#1a1a2e;--text-secondary:#5a6078;--text-muted:#9ca3b8;--text-accent:#4a6cf7;--border-subtle:rgba(100,149,237,.12);--border-glow:rgba(100,149,237,.3);--border-card:rgba(0,0,0,.06);--shadow-sm:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.02);--shadow-md:0 4px 16px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.03);--shadow-glow-blue:0 4px 30px rgba(100,149,237,.15);--font-sans:"Noto Sans JP","Zen Maru Gothic",sans-serif;--font-mono:"JetBrains Mono",monospace;--ease-smooth:cubic-bezier(.4,0,.2,1);--radius-sm:8px;--radius-md:12px;--radius-lg:18px}
+*,*:before,*:after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-primary);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-break:strict}
+a{color:var(--text-accent);text-decoration:none}
+.blueprint-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px),linear-gradient(var(--grid-line-major) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line-major) 1px,transparent 1px);background-size:24px 24px,24px 24px,120px 120px,120px 120px;opacity:.6}
+.navbar{position:sticky;top:0;z-index:100;background:var(--bg-glass);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border-card);box-shadow:var(--shadow-sm)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-logo{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;color:var(--text-primary);white-space:nowrap}
+.nav-links{display:flex;gap:2px;overflow-x:auto}
+.nav-link{padding:6px 10px;font-size:.85rem;font-weight:500;color:var(--text-secondary);border-radius:var(--radius-md);white-space:nowrap;transition:all .3s var(--ease-smooth)}
+.nav-link:hover{background:var(--bg-card-hover);color:var(--text-accent)}
+.hero{background:var(--bg-hero-grad);padding:72px 16px 48px;text-align:center}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.15em;color:var(--color-mui);border:1px solid var(--border-glow);border-radius:999px;padding:2px 14px;margin-bottom:16px}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:.04em}
+.hero h1 span{background:linear-gradient(90deg,var(--color-mui),var(--color-gauge));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--text-secondary);max-width:640px;margin:16px auto 0}
+main{max-width:1100px;margin:0 auto;padding:0 16px 80px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:-8px 0 48px}
+.toc a{background:var(--bg-card);border:1px solid var(--border-card);border-radius:999px;padding:4px 14px;font-size:.85rem;color:var(--text-secondary);box-shadow:var(--shadow-sm)}
+.toc a:hover{border-color:var(--border-glow);color:var(--text-accent)}
+section{margin-top:64px;scroll-margin-top:80px}
+.section-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.2em;color:var(--color-mui)}
+h2{font-size:1.6rem;font-weight:700;margin:4px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--border-subtle)}
+h3{font-size:1.1rem;margin-bottom:8px}
+p+p{margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-md);transition:all .3s var(--ease-smooth)}
+.card:hover{box-shadow:var(--shadow-glow-blue);border-color:var(--border-glow);transform:translateY(-2px)}
+.card .icon{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);display:block;margin-bottom:4px}
+.card p,.card li{font-size:.9rem;color:var(--text-secondary)}
+.card ul{padding-left:1.2em}
+.perm{display:inline-block;font-family:var(--font-mono);font-size:.7rem;border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+.p-setup{background:#e8efff;color:#3b5bdb}.p-staff{background:#e3fcef;color:var(--color-kuki)}.p-admin{background:#ffeef1;color:#c2255c}
+.steps{counter-reset:s;list-style:none;display:grid;gap:12px}
+.steps li{counter-increment:s;position:relative;background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-md);padding:14px 16px 14px 56px;box-shadow:var(--shadow-sm)}
+.steps li:before{content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--color-mui);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono)}
+code{font-family:var(--font-mono);font-size:.85em;background:#eef2ff;border-radius:4px;padding:1px 6px}
+.note{border-left:4px solid var(--color-cheekama);background:#fff7f8;border-radius:var(--radius-sm);padding:12px 16px;margin-top:16px;font-size:.9rem}
+.note.tip{border-color:var(--color-gauge);background:#f0fff7}
+table{width:100%;border-collapse:collapse;background:var(--bg-card);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.9rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border-subtle)}
+th{background:#f0f4ff;font-weight:700}
+.table-wrap{overflow-x:auto}
+footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8rem;border-top:1px solid var(--border-card)}
+@media (max-width:600px){.nav-links{display:none}.hero{padding-top:48px}}
+</style>
+</head>
+<body>
+<div class="blueprint-grid" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://houlab.jp/" class="nav-logo">放課後らぼらとり</a>
+    <div class="nav-links">
+      <a class="nav-link" href="#wand">管理の杖</a>
+      <a class="nav-link" href="#menu">管理メニュー</a>
+      <a class="nav-link" href="#setup">設定</a>
+      <a class="nav-link" href="#players">プレイヤー</a>
+      <a class="nav-link" href="#faq">困ったとき</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="tag">KEYTOUR / ADMIN GUIDE</span>
+  <h1><span>管理パネル</span>の使い方</h1>
+  <p>KeyTour の設定・運営・管理は、すべて「管理の杖」と管理メニューから行えます。コマンドやファイル編集は必要ありません。</p>
+</header>
+
+<main>
+  <div class="toc">
+    <a href="#perm">権限</a><a href="#wand">管理の杖</a><a href="#menu">メニュー一覧</a><a href="#setup">島・NPC・TP・アイテム</a><a href="#gate">最後の島</a><a href="#players">プレイヤー対応</a><a href="#ops">運営の道具</a><a href="#faq">困ったとき</a>
+  </div>
+
+  <section id="perm">
+    <span class="section-label">01 / PERMISSION</span>
+    <h2>権限</h2>
+    <p>メニューに出るボタンは、持っている権限によって変わります。</p>
+    <div class="table-wrap" style="margin-top:16px">
+    <table>
+      <tr><th>権限</th><th>対象</th><th>できること</th></tr>
+      <tr><td><code>keytour.setup</code></td><td>設定担当</td><td>島・NPC・TP・アイテム・最後の島の入口・全体設定・文言・設定の検証・読み直し・この場所の情報</td></tr>
+      <tr><td><code>keytour.staff</code></td><td>当日スタッフ</td><td>プレイヤーの進行の照会、演出の解除（中央へ戻す）、プレイヤーのところへ移動</td></tr>
+      <tr><td><code>keytour.admin</code></td><td>管理者</td><td>進行の付与・取消・初期化、集計からの除外、データ出力、バックアップ、演出の試験</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="wand">
+    <span class="section-label">02 / ADMIN WAND</span>
+    <h2>管理の杖</h2>
+    <p><code>keytour.setup</code> か <code>keytour.staff</code> を持つ人には、ログインすると光るブレイズロッド「<b>管理の杖</b>」が自動で渡されます。権限のない人が持っていた場合は回収されます。</p>
+    <div class="grid" style="margin-top:16px">
+      <div class="card"><span class="icon">RIGHT CLICK</span><h3>右クリック</h3><p>空中・ブロック・エンティティのどれに向けても、管理メニューが開きます。</p></div>
+      <div class="card"><span class="icon">PICK</span><h3>ブロック／NPCの指定</h3><p>メニューで「指定」を選ぶとメニューが閉じ、アクションバーに「杖で指定: …」と出ます。その状態で対象を右クリックします。</p></div>
+      <div class="card"><span class="icon">SNEAK + RIGHT CLICK</span><h3>指定をやめる</h3><p>しゃがんで右クリックすると、指定をやめます。</p></div>
+    </div>
+    <div class="note tip">範囲の指定（島・TPの区域・最後の島の入口）は、杖で<b>角のブロックを2か所</b>クリックします。高さはワールド全域になります。</div>
+  </section>
+
+  <section id="menu">
+    <span class="section-label">03 / MAIN MENU</span>
+    <h2>管理メニュー一覧</h2>
+    <div class="grid">
+      <div class="card"><span class="icon">GRASS_BLOCK</span><h3>島<span class="perm p-setup">setup</span></h3><p>範囲・到着点・BGM・時刻・かけら・鍵</p></div>
+      <div class="card"><span class="icon">VILLAGER_SPAWN_EGG</span><h3>NPC<span class="perm p-setup">setup</span></h3><p>紐付け・台詞・渡すかけら・一括配置</p></div>
+      <div class="card"><span class="icon">ENDER_PEARL</span><h3>TP<span class="perm p-setup">setup</span></h3><p>起点・行き先・条件・演出・時刻</p></div>
+      <div class="card"><span class="icon">AMETHYST_SHARD</span><h3>アイテム<span class="perm p-setup">setup</span></h3><p>かけら・鍵・道具の名前や見た目</p></div>
+      <div class="card"><span class="icon">IRON_DOOR</span><h3>最後の島の入口<span class="perm p-setup">setup</span></h3><p>入口の範囲・押し戻す位置・開放の条件</p></div>
+      <div class="card"><span class="icon">COMPARATOR / WRITABLE_BOOK</span><h3>全体設定・文言<span class="perm p-setup">setup</span></h3><p>砂時計・コンパス・飛行などの設定と、参加者に表示するメッセージ</p></div>
+      <div class="card"><span class="icon">SPYGLASS</span><h3>設定の検証<span class="perm p-setup">setup</span></h3><p>未登録のNPC・行き先のないTPなどを、赤（エラー）と黄（確認）で一覧</p></div>
+      <div class="card"><span class="icon">CLOCK / COMPASS</span><h3>読み直し・この場所の情報<span class="perm p-setup">setup</span></h3><p>YAMLを直接書き換えたときの再読込と、今いる場所の島・リージョン・区域の確認</p></div>
+      <div class="card"><span class="icon">PLAYER_HEAD</span><h3>プレイヤー<span class="perm p-staff">staff</span></h3><p>進行の照会・演出の解除（付与・取消などは admin）</p></div>
+      <div class="card"><span class="icon">MAP / CHEST</span><h3>データ出力・バックアップ<span class="perm p-admin">admin</span></h3><p>行動データのCSV出力、稼働中のままの進行・記録のコピー</p></div>
+      <div class="card"><span class="icon">BEACON / FEATHER</span><h3>演出の試験<span class="perm p-admin">admin</span></h3><p>30ブロック先へ、魔法陣のTP演出／短いTP演出を試す</p></div>
+    </div>
+  </section>
+
+  <section id="setup">
+    <span class="section-label">04 / LEDGER</span>
+    <h2>島・NPC・TP・アイテムの設定</h2>
+    <p>4つとも同じ流れで操作します。一覧から項目を選ぶと詳細メニューが開き、右下の<b>「新しく作る」</b>（エメラルド）でIDを入力して追加できます。「編集」はダイアログで開き、決定すると保存と読み直しが一度に行われます。</p>
+    <div class="grid" style="margin-top:16px">
+      <div class="card"><h3>🏝 島</h3><ul><li>到着点を現在地に</li><li>範囲を指定（杖で2点）</li><li>編集: 名前・種類・リージョン・時刻・BGM・かけら・鍵</li><li>到着点へ移動／消す</li></ul></div>
+      <div class="card"><h3>🧑 NPC</h3><ul><li>NPCを指定して紐付け（村人・防具立て・Citizens など）</li><li>コンパスの目標を現在地に</li><li>編集: 名前・所属島・渡すかけら・台詞・会話後のTP</li><li>一覧画面で「台帳どおりに一括配置」「置いたNPCを撤去」</li></ul></div>
+      <div class="card"><h3>🌀 TP</h3><ul><li>起点のブロックを指定（感圧板・ボタンなど）</li><li>区域を指定（杖で2点）</li><li>行き先を現在地に</li><li>編集: 起動方法・入場条件・演出・時刻・SE</li><li>自分で試す（条件も参加者と同じ）</li><li>一覧画面で「起点ブロックの点検」「起点を近くの感圧板に合わせる」</li></ul></div>
+      <div class="card"><h3>💎 アイテム</h3><ul><li>編集: 種類・基礎アイテム・モデル・名前・説明・速度・本のページ</li><li>試験用に受け取る（進行には記録されず、再ログインで回収）</li></ul></div>
+    </div>
+    <h3 style="margin-top:32px">はじめて設定するときの流れ</h3>
+    <ol class="steps">
+      <li>「島」で各島の範囲と到着点を決める。</li>
+      <li>「アイテム」でかけら・鍵の名前と見た目を整える。</li>
+      <li>「NPC」で一括配置するか、既存のエンティティを杖で紐付ける。</li>
+      <li>「TP」で起点と行き先を決め、「自分で試す」で確かめる。</li>
+      <li>「最後の島の入口」で範囲と開放の条件を決める。</li>
+      <li>「設定の検証」で赤がなくなるまで直す。</li>
+    </ol>
+  </section>
+
+  <section id="gate">
+    <span class="section-label">05 / FINAL ISLAND</span>
+    <h2>最後の島の入口</h2>
+    <ul class="card" style="padding-left:2.2em">
+      <li><b>入口の範囲を指定</b> — 杖で角を2か所。ここに入った瞬間に開放の条件を判定します。</li>
+      <li><b>押し戻す位置を現在地に</b> — 条件を満たさない人を戻す位置（未設定なら中央の到着点）。</li>
+      <li><b>開放の条件・入口を編集</b> — 必要な鍵の数・現物の所持・リージョン。</li>
+    </ul>
+    <div class="note">最後の島は、入るたびに鍵の現物を持っているかを確認します。開放の記録だけでは通れません。</div>
+  </section>
+
+  <section id="players">
+    <span class="section-label">06 / PLAYERS</span>
+    <h2>プレイヤー対応</h2>
+    <p>「プレイヤー」からオンラインの参加者を選ぶと、上部の本アイコンに進行（会話・かけら・鍵など）が表示されます。</p>
+    <div class="grid" style="margin-top:16px">
+      <div class="card"><h3>演出を解除して中央へ<span class="perm p-staff">staff</span></h3><p>動けない・暗いままなどのときに。演出を止め、移動制限・暗転・無音を解除して中央へ移動します。</p></div>
+      <div class="card"><h3>そのプレイヤーのところへ<span class="perm p-staff">staff</span></h3><p>相手の位置へテレポートします。</p></div>
+      <div class="card"><h3>付与／取消<span class="perm p-admin">admin</span></h3><p>会話済みNPC・かけら・鍵・最後の島の開放／到達・初回配布済みを付与、または取り消します。取消時、かけら・鍵は現物も回収します。</p></div>
+      <div class="card"><h3>進行を初期化<span class="perm p-admin">admin</span></h3><p>会話・かけら・鍵・開放・到達・配布をすべて消します。行動記録は残ります。元に戻せません。</p></div>
+      <div class="card"><h3>集計から除外<span class="perm p-admin">admin</span></h3><p>運営・試験アカウントは除外してください。</p></div>
+    </div>
+    <div class="note">解除・付与・取消・初期化では<b>理由の入力</b>を求められます。理由は管理記録に残ります。</div>
+  </section>
+
+  <section id="ops">
+    <span class="section-label">07 / OPERATIONS</span>
+    <h2>運営の道具</h2>
+    <div class="grid">
+      <div class="card"><h3>データ出力</h3><p>行動データを9項目のCSVで出力します。</p></div>
+      <div class="card"><h3>バックアップ</h3><p>サーバーを止めずに、進行と行動記録をコピーします。</p></div>
+      <div class="card"><h3>演出の試験</h3><p>自分を30ブロック先へTPさせて演出を確認します。</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <span class="section-label">08 / TROUBLESHOOTING</span>
+    <h2>困ったとき</h2>
+    <div class="grid">
+      <div class="card"><h3>杖がない</h3><p>権限があるか確認して、ログインし直してください。自動で渡されます。</p></div>
+      <div class="card"><h3>メニューが開かず「杖で指定」と出る</h3><p>指定待ちになっています。しゃがんで右クリックで解除できます。</p></div>
+      <div class="card"><h3>YAMLを直接書き換えた</h3><p>管理メニューの「読み直し」を押してください。</p></div>
+      <div class="card"><h3>どこかが動かない</h3><p>まず「設定の検証」を開き、赤い項目から直してください。</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>© 放課後らぼらとり — KeyTour 管理パネルガイド</footer>
+</body>
+</html>
