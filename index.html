@@ -107,6 +107,7 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
     <p><code>keytour.setup</code> か <code>keytour.staff</code> を持つ人には、ログインすると光るブレイズロッド「<b>管理の杖</b>」が自動で渡されます。権限のない人が持っていた場合は回収されます。</p>
     <div class="grid" style="margin-top:16px">
       <div class="card"><span class="icon">RIGHT CLICK</span><h3>右クリック</h3><p>空中・ブロック・エンティティのどれに向けても、管理メニューが開きます。</p></div>
+      <div class="card"><span class="icon">LEFT CLICK</span><h3>左クリックで掴む</h3><p>NPC・TPの起点を左クリックで掴み、置き場所を右クリックで移動します（<a href="#howto">手順</a>）。</p></div>
       <div class="card"><span class="icon">PICK</span><h3>ブロック／NPCの指定</h3><p>メニューで「指定」を選ぶとメニューが閉じ、アクションバーに「杖で指定: …」と出ます。その状態で対象を右クリックします。</p></div>
       <div class="card"><span class="icon">SNEAK + RIGHT CLICK</span><h3>指定をやめる</h3><p>しゃがんで右クリックすると、指定をやめます。</p></div>
     </div>
@@ -156,59 +157,51 @@ footer{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:.8r
 
   <section id="howto">
     <span class="section-label">05 / HOW-TO</span>
-    <h2>よくある作業の手順</h2>
-    <p>どの作業も「杖でメニューを開く → 対象を選ぶ → 杖で指定する／その場に立って押す」の流れです。変更はすぐ保存され、読み直しも自動で行われます。終わったら、チャットに出る「設定の検証」の件数も確認してください。</p>
+    <h2>位置を変える（いちばん簡単なやり方）</h2>
+    <p>NPCとTPの起点は、<b>杖で左クリックして掴み、置きたい場所を右クリック</b>するだけで動かせます。メニューを開く必要はありません。変更はすぐ保存され、チャットに結果と「設定の検証」の件数が出ます。</p>
+    <div class="grid" style="margin-top:16px">
+      <div class="card"><span class="icon">LEFT CLICK → RIGHT CLICK</span><h3>杖で掴んで置く</h3><p>NPC・TPの起点を左クリック → 置き場所のブロックを右クリック。</p></div>
+      <div class="card"><span class="icon">MENU</span><h3>メニューの1ボタン</h3><p>その場に立つ／見ているだけで決まるボタン。行き先・到着点もここから。</p></div>
+      <div class="card"><span class="icon">SNEAK + RIGHT CLICK</span><h3>やめるとき</h3><p>掴んでいる途中でしゃがんで右クリック。</p></div>
+    </div>
 
-    <h3 style="margin-top:32px">🌀 TPの起点（乗る感圧板・押すボタン）を移す</h3>
+    <h3 style="margin-top:32px">🧑 NPCを動かす</h3>
+    <p><b>A. 杖で掴んで置く</b></p>
     <ol class="steps">
-      <li>新しい場所に感圧板・ボタンなどを置き、その近くに立つ。</li>
-      <li>杖を右クリック →「TP」→ 移したいTP（例: <code>castle_tp1</code>）を選ぶ。</li>
-      <li>「<b>起点のブロックを指定</b>」（感圧板のアイコン）を押す。メニューが閉じ、画面下に「杖で指定: TP … の起点ブロック」と出る。</li>
-      <li>杖で、新しい感圧板・ボタンを<b>右クリック</b>する。</li>
-      <li>チャットに「起点を … にしました」と出たら完了。起動方法は自動で「ブロック」になる。</li>
-      <li>TPの詳細で「<b>自分で試す</b>」を押し、参加者と同じ条件で飛べるか確かめる。</li>
+      <li>杖でNPCを<b>左クリック</b>する。画面下に「杖で指定: NPC … の置き場所」と出る。</li>
+      <li>立たせたい場所のブロックを杖で<b>右クリック</b>する。NPCはそのブロックの上に、<b>あなたの方を向いて</b>立つ。</li>
     </ol>
-    <div class="shots"><figure class="shot"><img src="img/pick.jpg" alt="指定中は画面下に「杖で指定: …」と出る。やめるときはしゃがんで右クリック" loading="lazy"><figcaption>指定中は画面下に「杖で指定: …」と出る。やめるときはしゃがんで右クリック</figcaption></figure><figure class="shot"><img src="img/picked.jpg" alt="右クリックすると起点が切り替わり、チャットに結果が出る" loading="lazy"><figcaption>右クリックすると起点が切り替わり、チャットに結果が出る</figcaption></figure></div>
-
-    <h3 style="margin-top:32px">📍 TPの行き先（飛んだ先）を変える</h3>
+    <div class="shots"><figure class="shot"><img src="img/grab-npc.jpg" alt="NPCを左クリックすると掴んだ状態になる" loading="lazy"><figcaption>NPCを左クリックすると掴んだ状態になる</figcaption></figure><figure class="shot"><img src="img/grab-npc-done.jpg" alt="置き場所を右クリックすると、その場でNPCが移動する" loading="lazy"><figcaption>置き場所を右クリックすると、その場でNPCが移動する</figcaption></figure></div>
+    <p style="margin-top:20px"><b>B. 自分が立っている場所へ呼ぶ</b></p>
     <ol class="steps">
-      <li>新しい行き先に<b>自分が立ち</b>、着いたときに向かせたい方向を見る（向きも保存されます）。</li>
-      <li>杖を右クリック →「TP」→ 対象のTPを選ぶ。</li>
-      <li>「<b>行き先を現在地に</b>」（ベッドのアイコン）を押す。カーソルを合わせると今の行き先が見られる。</li>
-      <li>チャットに「行き先を設定しました」と出たら完了。起点へ戻って「自分で試す」で確認する。</li>
+      <li>NPCを立たせたい場所に立ち、NPCに向かせたい方向を見る。</li>
+      <li>杖を右クリック →「NPC」→ 対象のNPC →「<b>NPCをここへ移動</b>」（防具立てのアイコン）を押す。</li>
     </ol>
-    <div class="shots"><figure class="shot"><img src="img/tp-dest.jpg" alt="「行き先を現在地に」。説明に今の行き先が出る" loading="lazy"><figcaption>「行き先を現在地に」。説明に今の行き先が出る</figcaption></figure><figure class="shot"><img src="img/tp-dest-done.jpg" alt="押すとすぐ保存され、検証結果も表示される" loading="lazy"><figcaption>押すとすぐ保存され、検証結果も表示される</figcaption></figure></div>
-    <div class="note tip">踏む範囲で起動させたいときは、「<b>区域を指定</b>」（金のシャベル）を押し、杖で範囲の角を2か所右クリックします。起動方法は自動で「区域」になります。</div>
+    <div class="shots"><figure class="shot"><img src="img/npc-here.jpg" alt="「NPCをここへ移動」。今の位置・向きにそのNPCだけを置き直す" loading="lazy"><figcaption>「NPCをここへ移動」。今の位置・向きにそのNPCだけを置き直す</figcaption></figure></div>
+    <div class="note tip">どちらのやり方でも、動くのは<b>そのNPC1体だけ</b>です。古い位置のNPCは自動で片付けられ、コンパスの目標も新しい位置になります。一括配置のNPC・自分で置いた村人や防具立て・CitizensのNPCのどれでも使えます。</div>
 
-    <h3 style="margin-top:32px">🧑 NPCの位置を変える（一括配置したNPC）</h3>
+    <h3 style="margin-top:32px">🌀 TPの起点（感圧板・ボタン）を移す</h3>
     <ol class="steps">
-      <li>杖を右クリック →「NPC」→ 一覧の下段「<b>置いたNPCを撤去</b>」→「決定」。古い位置のNPCを先に片付けておく（遠くの読み込まれていない場所に古いNPCが残るのを防ぐ）。</li>
-      <li>NPCを立たせたい場所に<b>自分が立ち</b>、NPCに向かせたい方向を見る。</li>
-      <li>杖を右クリック →「NPC」→ 動かしたいNPC（例: <code>start_npc1</code>）を選ぶ。</li>
-      <li>「<b>コンパスの目標を現在地に</b>」（ターゲットのアイコン）を押す。これが台帳上のNPCの位置になり、コンパスもここを指すようになる。</li>
-      <li>「戻る」でNPCの一覧に戻り、下段の「<b>台帳どおりに一括配置</b>」（防具立てのアイコン）を押す。</li>
-      <li>確認画面で「決定」を押すと、全NPCが台帳の位置に置き直される。</li>
-      <li>「NPCのところへ移動」で、新しい位置に立っているか確かめる。</li>
+      <li>新しい場所に感圧板・ボタンなどを置く。</li>
+      <li><b>A.</b> 杖で今の起点（古い感圧板）を<b>左クリック</b> → 新しい感圧板を<b>右クリック</b>。<br><b>B.</b> 新しい感圧板を見ながら、杖を右クリック →「TP」→ 対象のTP →「<b>見ているブロックを起点に</b>」（望遠鏡のアイコン）。</li>
+      <li>チャットに「起点を … にしました」と出たら完了。乗って飛べるか確かめる。</li>
     </ol>
-    <div class="shots"><figure class="shot"><img src="img/npc-target.jpg" alt="「コンパスの目標を現在地に」で位置を記録" loading="lazy"><figcaption>「コンパスの目標を現在地に」で位置を記録</figcaption></figure><figure class="shot"><img src="img/npc-place.jpg" alt="NPC一覧の下段「台帳どおりに一括配置」" loading="lazy"><figcaption>NPC一覧の下段「台帳どおりに一括配置」</figcaption></figure><figure class="shot"><img src="img/npc-confirm.jpg" alt="確認画面。決定で全NPCを置き直す" loading="lazy"><figcaption>確認画面。決定で全NPCを置き直す</figcaption></figure></div>
-    <div class="note">一括配置は、前に一括配置で置いたNPCを<b>すべて消して置き直します</b>。また、位置が登録されている<b>全NPCの紐付けが一括配置のNPCに切り替わります</b>。下の「付け替える」で自分で置いたNPCに紐付けている場合は、一括配置のあとにもう一度紐付けてください。</div>
+    <div class="shots"><figure class="shot"><img src="img/tp-look.jpg" alt="「見ているブロックを起点に」。目の前5ブロック以内のブロックが起点になる" loading="lazy"><figcaption>「見ているブロックを起点に」。目の前5ブロック以内のブロックが起点になる</figcaption></figure><figure class="shot"><img src="img/tp-look-done.jpg" alt="設定するとチャットに結果が出る" loading="lazy"><figcaption>設定するとチャットに結果が出る</figcaption></figure></div>
+    <div class="note">感圧板の起点は、<b>板が押されたかではなく、プレイヤーがそのブロックの範囲に入ったか</b>で判定します。板の反応が遅い・押されない・NPCや動物が乗っている場合でも、プレイヤーが乗れば確実に飛びます。ボタン・レバー・看板は今までどおり右クリックで起動します。</div>
 
-    <h3 style="margin-top:32px">🔗 自分で置いたNPCに付け替える（村人・防具立て・Citizens など）</h3>
+    <h3 style="margin-top:32px">📍 TPの行き先・島の到着点を変える</h3>
     <ol class="steps">
-      <li>新しいNPC（エンティティ）を好きな場所に置く。</li>
-      <li>杖を右クリック →「NPC」→ 対象のNPCを選ぶ。</li>
-      <li>「<b>NPCを指定して紐付け</b>」（リードのアイコン）を押す。</li>
-      <li>杖で、置いたエンティティを<b>右クリック</b>する。</li>
-      <li>チャットに「… に紐付けました」と出たら完了。会話・かけらの受け渡しはそのエンティティで動き、コンパスの目標もその位置になる。</li>
+      <li><b>その場で:</b> 着地させたい場所に立って向きを決め、TPの「<b>行き先を現在地に</b>」／島の「<b>到着点を現在地に</b>」を押す。</li>
+      <li><b>離れた場所を指定:</b> TPの「<b>杖で行き先を指定</b>」／島の「<b>杖で到着点を指定</b>」を押し、着地させたいブロックを杖で右クリック。向きは押した時に向いていた方向になる。</li>
+      <li>TPは詳細の「自分で試す」、島は「到着点へ移動」で確かめる。</li>
     </ol>
-    <div class="shots"><figure class="shot"><img src="img/npc-link.jpg" alt="「NPCを指定して紐付け」。今の紐付け先も表示される" loading="lazy"><figcaption>「NPCを指定して紐付け」。今の紐付け先も表示される</figcaption></figure></div>
+    <div class="shots"><figure class="shot"><img src="img/tp-dest.jpg" alt="「行き先を現在地に」。説明に今の行き先が出る" loading="lazy"><figcaption>「行き先を現在地に」。説明に今の行き先が出る</figcaption></figure></div>
 
-    <h3 style="margin-top:32px">🏝 島の範囲・到着点を変える</h3>
+    <h3 style="margin-top:32px">🏝 島の範囲を変える</h3>
     <ol class="steps">
-      <li>杖を右クリック →「島」→ 対象の島を選ぶ。</li>
-      <li>範囲: 「<b>範囲を指定</b>」→ 杖で島の角のブロックを右クリック → 対角のブロックを右クリック（高さはワールド全域）。</li>
-      <li>到着点: 着地させたい場所に立って向きを決め、「<b>到着点を現在地に</b>」を押す。</li>
-      <li>「この場所の情報」（管理メニューのコンパス）で、島の中にいると判定されるか確かめる。</li>
+      <li>杖を右クリック →「島」→ 対象の島 →「<b>範囲を指定</b>」（金のシャベル）。</li>
+      <li>杖で島の角のブロックを右クリック → 対角のブロックを右クリック（高さはワールド全域）。</li>
+      <li>管理メニューの「この場所の情報」で、島の中と判定されるか確かめる。</li>
     </ol>
   </section>
 
